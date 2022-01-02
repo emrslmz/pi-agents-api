@@ -5,13 +5,9 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-const collectionName = 'agent';
+const port = 3000;
 
-const port = process.env.MONGODB_URI || 3000;
-// const uri = process.env.MONGODB_CONNECTION_STRING;
-const uri = `mongodb+srv://emrslmz:emre123@cluster0.dzjzj.mongodb.net/${collectionName}?retryWrites=true&w=majority`;
-
-mongoose.connect(uri, {
+mongoose.connect(process.env.MONGODB_HOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
