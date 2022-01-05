@@ -16,8 +16,8 @@ mongoose.connection.once('open', () => {
     console.log('MongoDB database connection established successfully!');
 });
 
-app.use('/api/agent', require('./routes/agent'));
-app.use('/api/survey-category', require('./routes/surveyCategory'));
+app.use('/api/agents', require('./routes/agent'));
+app.use('/api/survey-categorys', require('./routes/surveyCategory'));
 app.use('*', require('./database/index'));
 
 app.listen(port, () => {
