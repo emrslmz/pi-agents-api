@@ -1,31 +1,29 @@
 const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv').config();
+const agentRouter = require('./routes/agent');
+const surveyCategoryRouter = require('./routes/surveyCategory');
+require('dotenv/config');
 
 const app = express();
 app.use(express.json());
-
-const port = process.env.PORT || 3000;
 
 mongoose.connect(process.env.MONGODB_HOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-mongoose.connection.once('open', () => {
-    console.log('MongoDB database connection established successfully!');
+app.get('/', (req, res) => {
+    res.send('Hi, welcome to Products RESTFUL API 😍');
 });
 
-app.get('/', function(req,res) {
-    res.send('working');
-});
-
-app.use('/api/agents', require('./routes/agent'));
-app.use('/api/survey-categorys', require('./routes/surveyCategory'));
+app.use('/api/agents', agentRouter);
+app.use('/api/survey-categories', surveyCategoryRouter);
 app.use('*', require('./database/index'));
 
+const port = process.env.PORT || 5000;
+
 app.listen(port, () => {
-    console.log(`App is listening at http://locahost:${port}`);
+    console.log(`Server started on port ${port}`);
 });
 
 

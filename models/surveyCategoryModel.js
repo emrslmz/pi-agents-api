@@ -45,14 +45,3 @@ const surveyCategorySchema = new Schema({
 const SurveyCategoryModel = mongoose.model('surveyCategory', surveyCategorySchema);
 
 module.exports = SurveyCategoryModel;
-
-/*
-{
-    "surveyId": 1,
-    "categoryName": "Valorant",
-    "categoryMinName": "Valo",
-    "categoryImage": "valorant_heros.png",
-    "active": true,
-    "visibility": true
-}
-*/

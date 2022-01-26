@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
@@ -6,7 +6,7 @@ const agentSchema = new Schema({
     agentId: {
         type: Number,
         required: true,
-        unique: false,
+        unique: true,
     },
     agentName: {
         type: String,
@@ -38,26 +38,8 @@ const agentSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    // status: {
-    //     type: Number,
-    //     validate : {
-    //         validator : Number.isInteger,
-    //         message   : '{VALUE} is not an integer value'
-    //     }
-    // }
 });
 
 const AgentModel = mongoose.model('agent', agentSchema);
 
 module.exports = AgentModel;
-
-
-/*
-{
-    "agentId":"1",
-    "agentName": "Astra",
-    "agentSurveyCategoryId": 1,
-    "agentPicture": "val_astra.png",
-    "numberHave" : 1852
-}
-*/
