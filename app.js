@@ -16,6 +16,13 @@ app.get('/', (req, res) => {
     res.send('Hi, welcome to Products RESTFUL API 😍');
 });
 
+app.use((req, res, next) => {
+    res.header('Content-Type', 'application/json');
+    res.header('Accept', 'application/json');
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.use('/api/agents', agentRouter);
 app.use('/api/survey-categories', surveyCategoryRouter);
 app.use('*', require('./database/index'));
