@@ -16,7 +16,7 @@ route.get('/', async (req, res) => {
 route.get('/:id', async (req, res) => {
     await SurveyCategory.findOne({_id: req.params.id})
         .then((category) => {
-            res.json(category);
+            res = category;
         })
         .catch((err) => {
             res.json(err);
